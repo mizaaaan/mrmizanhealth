@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Mizanur Rahman — Health Technologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --p:#2563EB;--pl:#3B82F6;--cy:#06B6D4;--am:#F59E0B;--gn:#10B981;
+  --bg:#EEF3FB;
+  --s-wh:rgba(255,255,255,0.86);
+  --s-lt:rgba(238,243,251,0.72);
+  --card:#FFFFFF;
+  --card-alt:#F1F5FB;
+  --nav-bg:rgba(238,243,251,0.88);
+  --txt:#0F172A;
+  --txt2:#5A6E87;
+  --brd:rgba(130,148,175,0.32);
+  --grid:rgba(100,116,139,0.17);
+  --sh:0 4px 24px rgba(37,99,235,.11);
+  --cta1:#0D1426;--cta2:#162035;
+  --tog:rgba(15,23,42,0.9);--tog-c:#fff
+}
+
+[data-theme="dark"]{
+  --bg:#040912;
+  --s-wh:rgba(9,18,36,0.94);
+  --s-lt:rgba(4,9,18,0.82);
+  --card:#0A1428;
+  --card-alt:#07101F;
+  --nav-bg:rgba(4,9,18,0.92);
+  --txt:#DDE6F5;
+  --txt2:#7A90B0;
+  --brd:rgba(255,255,255,0.09);
+  --grid:rgba(100,130,175,0.1);
+  --sh:0 4px 28px rgba(0,0,0,.5);
+  --cta1:#02050F;--cta2:#060D1E;
+  --tog:rgba(220,235,255,0.9);--tog-c:#040912
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;transition:background .35s,color .3s}
+
+/* === GLOBAL GRID LAYER === */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:44px 44px;
+  transition:background-image .35s
+}
+
+section,footer{position:relative;z-index:1}
+
+/* smooth theme transitions on key elements */
+nav,section,footer,.tl-card,.sk-card,.lang-card,.cert-card,.vol-card,.c-item,.ref-card,.card{
+  transition:background .35s,border-color .3s,color .3s,box-shadow .2s
+}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 2rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav-bg);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--brd);
+  transition:box-shadow .3s,background .35s
+}
+nav.scrolled{box-shadow:var(--sh)}
+.logo{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1.05rem;color:var(--p);text-decoration:none}
+.logo span{color:var(--cy)}
+.nav-r{display:flex;align-items:center;gap:1.2rem}
+.nav-links{display:flex;gap:1.7rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--txt2);font-size:.84rem;font-weight:500;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--p);transition:width .2s}
+.nav-links a:hover{color:var(--p)}
+.nav-links a:hover::after{width:100%}
+
+/* theme toggle */
+.tog{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--tog);color:var(--tog-c);
+  border:none;cursor:pointer;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s,background .35s
+}
+.tog:hover{transform:rotate(22deg) scale(1.1)}
+
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s}
+
+/* === HERO === */
+.hero{
+  min-height:100vh;padding:100px 2rem 5rem;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--s-lt)
+}
+.hero-inner{max-width:960px;width:100%;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
+.av-wrap{position:relative;flex-shrink:0}
+.av-ring{position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(var(--p),var(--cy),var(--am),var(--p));animation:spin 5s linear infinite}
+.av{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--cy));display:flex;align-items:center;justify-content:center;font-size:3.2rem;font-weight:700;color:#fff;position:relative;z-index:1;margin:5px;font-family:'Space Grotesk',sans-serif}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(37,99,235,.1);color:var(--p);padding:.3rem .9rem;border-radius:2rem;font-size:.78rem;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;margin-bottom:.9rem;border:1px solid rgba(37,99,235,.22)}
+.badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gn);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:.5rem}
+h1 span{background:linear-gradient(90deg,var(--p),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:1.05rem;color:var(--txt2);margin-bottom:1.6rem}
+.stats{display:flex;gap:2rem;margin-bottom:2rem}
+.sn{font-size:1.9rem;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1;color:var(--txt)}
+.sn em{color:var(--p);font-style:normal}
+.sl{font-size:.78rem;color:var(--txt2);font-weight:500;margin-top:.2rem}
+.cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.7rem 1.5rem;border-radius:.5rem;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .2s;font-family:'Space Grotesk',sans-serif;cursor:pointer;border:none}
+.btn-p{background:linear-gradient(135deg,var(--p),var(--pl));color:#fff;box-shadow:0 4px 16px rgba(37,99,235,.3)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.42)}
+.btn-o{background:transparent;color:var(--p);border:1.5px solid var(--p)}
+.btn-o:hover{background:rgba(37,99,235,.07);transform:translateY(-2px)}
+
+/* === SECTIONS === */
+section{padding:5rem 2rem}
+.sec-wh{background:var(--s-wh)}
+.sec-lt{background:var(--s-lt)}
+.container{max-width:960px;margin:0 auto}
+.st{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--cy);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.sh{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--txt)}
+.sh span{color:var(--p)}
+.div{width:44px;height:3px;background:linear-gradient(90deg,var(--p),var(--cy));border-radius:2px;margin-top:.7rem;margin-bottom:2.5rem}
+
+/* === ABOUT === */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.at p{color:var(--txt2);margin-bottom:1rem;line-height:1.85;font-size:.97rem}
+.at strong{color:var(--txt)}
+.ci{display:flex;flex-direction:column;gap:.7rem}
+.cii{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--card-alt);border-radius:.5rem;border:1px solid var(--brd)}
+.cii:hover{border-color:var(--p);box-shadow:0 0 0 3px rgba(37,99,235,.07)}
+.cion{width:36px;height:36px;background:linear-gradient(135deg,var(--p),var(--cy));border-radius:.4rem;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.cii a{color:var(--txt);text-decoration:none;font-size:.88rem;font-weight:500}
+.cii a:hover{color:var(--p)}
+
+/* === SKILLS === */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.sk{background:var(--card);border:1px solid var(--brd);border-radius:.75rem;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:.9rem}
+.sk:hover{border-color:var(--p);box-shadow:var(--sh);transform:translateY(-2px)}
+.si{width:42px;height:42px;border-radius:.5rem;background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(6,182,212,.12));display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.sn2{font-weight:600;font-size:.88rem;color:var(--txt)}
+
+/* === LANGUAGES === */
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+.lc{background:var(--card);border:1px solid var(--brd);border-radius:.75rem;padding:1.2rem 1.4rem}
+.lt2{display:flex;justify-content:space-between;font-size:.88rem;font-weight:600;color:var(--txt);margin-bottom:.6rem}
+.lt2 span{font-weight:400;color:var(--txt2);font-size:.8rem}
+.bb{background:var(--brd);border-radius:4px;height:6px;overflow:hidden}
+.bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--p),var(--cy))}
+
+/* === TIMELINE === */
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--p),var(--cy),transparent)}
+.tli{position:relative;padding-bottom:2.2rem}
+.tli:last-child{padding-bottom:0}
+.tli::before{content:'';position:absolute;left:-2.45rem;top:7px;width:13px;height:13px;border-radius:50%;background:var(--p);border:2.5px solid var(--bg);box-shadow:0 0 0 3px rgba(37,99,235,.2)}
+.tc{background:var(--card);border:1px solid var(--brd);border-radius:.75rem;padding:1.4rem 1.6rem}
+.tc:hover{border-color:var(--p);box-shadow:var(--sh)}
+.td{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--p);font-weight:600;background:rgba(37,99,235,.1);display:inline-block;padding:.2rem .7rem;border-radius:2rem;margin-bottom:.6rem}
+.tt{font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.2rem}
+.to{font-size:.85rem;color:var(--p);font-weight:500;margin-bottom:.5rem}
+.tx{font-size:.86rem;color:var(--txt2);line-height:1.75}
+.tx strong{color:var(--txt)}
+
+/* === CERTS === */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.cc{background:var(--card-alt);border:1px solid var(--brd);border-radius:.75rem;padding:1.4rem;display:flex;gap:1rem;align-items:flex-start}
+.cc:hover{border-color:var(--cy);box-shadow:0 4px 20px rgba(6,182,212,.13);transform:translateY(-2px)}
+.cb{width:48px;height:48px;flex-shrink:0;background:linear-gradient(135deg,var(--p),var(--cy));border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.cy2{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--cy);font-weight:600;margin-bottom:.3rem}
+.cn{font-weight:700;font-size:.93rem;color:var(--txt);margin-bottom:.2rem}
+.co{font-size:.8rem;color:var(--txt2)}
+
+/* === VOLUNTEER === */
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.vc{background:var(--card);border:1px solid var(--brd);border-left:4px solid var(--gn);border-radius:.75rem;padding:1.4rem}
+.vc:hover{box-shadow:var(--sh);transform:translateY(-2px)}
+.vy{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gn);font-weight:600;margin-bottom:.4rem}
+.vt{font-weight:700;font-size:.97rem;color:var(--txt);margin-bottom:.2rem}
+.vo{font-size:.85rem;color:var(--p);font-weight:500;margin-bottom:.45rem}
+.vx{font-size:.84rem;color:var(--txt2);line-height:1.7}
+
+/* === REFERENCES === */
+.rc{background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(6,182,212,.06));border:1px solid rgba(37,99,235,.18);border-radius:.75rem;padding:2rem;max-width:380px}
+.rc:hover{border-color:var(--p);box-shadow:var(--sh)}
+.rn{font-size:1.1rem;font-weight:700;color:var(--txt);margin-bottom:.25rem}
+.rr{font-size:.85rem;color:var(--txt2);margin-bottom:1rem}
+.rt{display:inline-flex;align-items:center;gap:.5rem;color:var(--p);font-size:.9rem;font-weight:600;text-decoration:none}
+.rt:hover{text-decoration:underline}
+
+/* === CONTACT === */
+#contact{background:linear-gradient(135deg,var(--cta1),var(--cta2))!important;color:#fff!important;text-align:center}
+#contact .st{color:var(--cy)}
+#contact h2{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;margin-bottom:1rem;color:#fff}
+#contact p{color:#8099B8;margin-bottom:2.2rem;max-width:480px;margin-left:auto;margin-right:auto}
+.btn-gh{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-gh:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+
+/* === FOOTER === */
+footer{background:var(--cta1)!important;color:#3D5070;text-align:center;padding:1.8rem 2rem;font-size:.83rem;border-top:1px solid rgba(255,255,255,.05)}
+footer span{color:var(--cy)}
+
+/* === FADE IN === */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}
+.fi.vis{opacity:1;transform:translateY(0)}
+
+/* === MOBILE === */
+@media(max-width:768px){
+  nav{padding:0 1rem}
+  .burger{display:flex}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(14px);flex-direction:column;padding:1.5rem 2rem;border-bottom:1px solid var(--brd);gap:1.25rem;box-shadow:var(--sh)}
+  .nav-links.open{display:flex}
+  .hero{padding:88px 1.5rem 3.5rem}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .av-wrap{margin:0 auto}
+  .stats{justify-content:center}
+  .cta{justify-content:center}
+  .ag{grid-template-columns:1fr}
+  section{padding:3.5rem 1.5rem}
+  .tl{padding-left:1.5rem}
+  .tli::before{left:-1.95rem}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav id="nav">
+  <a href="#hero" class="logo">MR<span>.health</span></a>
+  <div class="nav-r">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#volunteer">Volunteer</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="tog" id="tog" title="Toggle dark/light mode">🌙</button>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero sec-lt">
+  <div class="hero-inner">
+    <div class="av-wrap">
+      <div class="av-ring"></div>
+      <div class="av">MR</div>
+    </div>
+    <div>
+      <div class="badge">🟢 Open to opportunities</div>
+      <h1>MD Mizanur<br><span>Rahman</span></h1>
+      <p class="sub">Health Technologist · Pharmacist · Medical Professional</p>
+      <div class="stats">
+        <div><div class="sn">4<em>+</em></div><div class="sl">Years Experience</div></div>
+        <div><div class="sn">98<em>%</em></div><div class="sl">Patient Satisfaction</div></div>
+        <div><div class="sn">4</div><div class="sl">Languages</div></div>
+      </div>
+      <div class="cta">
+        <a href="mailto:mizan321@hotmail.com" class="btn btn-p">✉️ Get In Touch</a>
+        <a href="#experience" class="btn btn-o">View Experience ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec-wh">
+  <div class="container">
+    <div class="fi"><div class="st">// about_me.txt</div><div class="sh">About <span>Me</span></div><div class="div"></div></div>
+    <div class="ag">
+      <div class="at fi">
+        <p>I am a dedicated <strong>Health Technologist</strong> and <strong>Pharmacist</strong> with over four years of hands-on experience as a medical assistant in well-known hospitals across Bangladesh.</p>
+        <p>Currently serving as the <strong>Owner & Pharmacist at Dream Pharmacy</strong>, I manage prescriptions, patient consultations, and ensure accurate medication dispensing with a strong commitment to quality.</p>
+        <p>My BSc in <strong>Chemistry</strong> from the National University of Bangladesh, combined with clinical experience, gives me a unique edge in pharmaceutical and medical care.</p>
+      </div>
+      <div class="ci fi">
+        <div class="cii"><div class="cion">📞</div><a href="tel:+8801725752500">+880 1725 752500</a></div>
+        <div class="cii"><div class="cion">✉️</div><a href="mailto:mizan321@hotmail.com">mizan321@hotmail.com</a></div>
+        <div class="cii"><div class="cion">🌐</div><a href="http://chemistmizan.blogspot.com" target="_blank" rel="noopener noreferrer">chemistmizan.blogspot.com</a></div>
+        <div class="cii"><div class="cion">📍</div><a>3838 Noakhali, Bangladesh</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec-lt">
+  <div class="container">
+    <div class="fi"><div class="st">// skills.json</div><div class="sh">Clinical <span>Skills</span></div><div class="div"></div></div>
+    <div class="sg fi">
+      <div class="sk"><div class="si">💉</div><div class="sn2">Administering Injections</div></div>
+      <div class="sk"><div class="si">🩺</div><div class="sn2">Patient Assessment</div></div>
+      <div class="sk"><div class="si">🏥</div><div class="sn2">First Aid Treatment</div></div>
+      <div class="sk"><div class="si">📋</div><div class="sn2">Medical Record Keeping</div></div>
+      <div class="sk"><div class="si">💊</div><div class="sn2">Prescription Management</div></div>
+      <div class="sk"><div class="si">🔬</div><div class="sn2">Chemical Analysis</div></div>
+    </div>
+    <div class="fi" style="margin-top:3rem"><div class="st">// languages.config</div><div class="sh">Language <span>Proficiency</span></div><div class="div"></div></div>
+    <div class="lg fi">
+      <div class="lc"><div class="lt2">Bangla <span>Native</span></div><div class="bb"><div class="bar" style="width:100%"></div></div></div>
+      <div class="lc"><div class="lt2">English <span>Fluent</span></div><div class="bb"><div class="bar" style="width:85%"></div></div></div>
+      <div class="lc"><div class="lt2">Arabic <span>Conversational</span></div><div class="bb"><div class="bar" style="width:60%"></div></div></div>
+      <div class="lc"><div class="lt2">Urdu / Hindi <span>Conversational</span></div><div class="bb"><div class="bar" style="width:65%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec-wh">
+  <div class="container">
+    <div class="fi"><div class="st">// experience.log</div><div class="sh">Work <span>Experience</span></div><div class="div"></div></div>
+    <div class="tl fi">
+      <div class="tli"><div class="tc"><div class="td">2022 — Present</div><div class="tt">Owner &amp; Pharmacist</div><div class="to">Dream Pharmacy</div><div class="tx">Responsible for managing prescriptions, patient consultations, and ensuring accurate medication dispensing with full pharmacy oversight.</div></div></div>
+      <div class="tli"><div class="tc"><div class="td">2021 — 2022</div><div class="tt">Medical Assistant</div><div class="to">Life Line Hospital Pvt.</div><div class="tx">Assessed, diagnosed, and treated patients, providing comprehensive care resulting in a <strong>98% patient satisfaction</strong> rate.</div></div></div>
+      <div class="tli"><div class="tc"><div class="td">2018 — 2022</div><div class="tt">Medical Assistant</div><div class="to">Al-Habib Hospital Pvt.</div><div class="tx">Administered precise injections, delivered emergency treatment, and provided first aid across various departments.</div></div></div>
+      <div class="tli"><div class="tc"><div class="td">2018 — 2019</div><div class="tt">Pharmacy Intern</div><div class="to">Al-Habib Hospital Pharmacy</div><div class="tx">Supported prescription verification, patient interactions, and medication inventory management.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec-lt">
+  <div class="container">
+    <div class="fi"><div class="st">// education.db</div><div class="sh">Academic <span>Background</span></div><div class="div"></div></div>
+    <div class="tl fi">
+      <div class="tli"><div class="tc"><div class="td">2026</div><div class="tt">Bachelor of Science in Chemistry</div><div class="to">National University of Bangladesh</div><div class="tx">Focused on chemical analysis and laboratory techniques with applications in pharmaceutical sciences.</div></div></div>
+      <div class="tli"><div class="tc"><div class="td">2017 — 2018</div><div class="tt">Certificate in Health Technology &amp; Services</div><div class="to">Noakhali Paramedical College</div><div class="tx">Earned a professional certificate enhancing healthcare delivery knowledge and clinical skills.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec-wh">
+  <div class="container">
+    <div class="fi"><div class="st">// certs.verified</div><div class="sh">Certifications &amp; <span>Licenses</span></div><div class="div"></div></div>
+    <div class="cg fi">
+      <div class="cc"><div class="cb">🏅</div><div><div class="cy2">2018</div><div class="cn">Certificate in Pharma Technology</div><div class="co">Bangladesh Technical Education Board</div></div></div>
+      <div class="cc"><div class="cb">🎓</div><div><div class="cy2">2023</div><div class="cn">Bachelor of Science in Chemistry</div><div class="co">National University of Bangladesh</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section id="volunteer" class="sec-lt">
+  <div class="container">
+    <div class="fi"><div class="st">// volunteer.impact</div><div class="sh">Volunteer <span>Work</span></div><div class="div"></div></div>
+    <div class="vg fi">
+      <div class="vc"><div class="vy">2019</div><div class="vt">Volunteer Medical Assistant</div><div class="vo">Surjotory Foundation</div><div class="vx">Conducted community screenings, medical procedures, vaccination drives, and healthcare outreach programs.</div></div>
+      <div class="vc"><div class="vy">2021</div><div class="vt">Medical Volunteer</div><div class="vo">Ashar Alo Social Organisation</div><div class="vx">Assessed and treated community members, organized support programs and memorial services for those in need.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references" class="sec-wh">
+  <div class="container">
+    <div class="fi"><div class="st">// references.list</div><div class="sh">Professional <span>Reference</span></div><div class="div"></div></div>
+    <div class="rc fi">
+      <div class="rn">Dr. Rakibul Islam</div>
+      <div class="rr">Medical Officer · Kashipur Al-Habib Hospital Pvt.</div>
+      <a href="tel:+8801886521425" class="rt">📞 +880 1886 521425</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container fi">
+    <div class="st">// get_in_touch()</div>
+    <h2>Let's <span style="color:var(--cy)">Connect</span></h2>
+    <p>Available for healthcare consultations, professional collaborations, and pharmaceutical services across Bangladesh.</p>
+    <div class="cta" style="justify-content:center">
+      <a href="mailto:mizan321@hotmail.com" class="btn btn-p">✉️ mizan321@hotmail.com</a>
+      <a href="tel:+8801725752500" class="btn btn-gh">📞 +880 1725 752500</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>MD Mizanur Rahman</span> · Health Technologist · Noakhali, Bangladesh</p>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const nl = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
+
+  // Dark / Light toggle
+  const tog = document.getElementById('tog');
+  let dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  tog.textContent = dark ? '☀️' : '🌙';
+  tog.addEventListener('click', () => {
+    dark = !dark;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    tog.textContent = dark ? '☀️' : '🌙';
+  });
+
+  // Scroll fade-in
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('vis'), i * 90);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
